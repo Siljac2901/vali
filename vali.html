@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .yes-button {
+            background-color: #ff4d79;
+            color: white;
+            transition: 0.2s ease;
+        }
+
+        .no-button {
+            background-color: #999;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="question">Will you be my Valentine? 💘</h1>
+
+    <button class="yes-button" onclick="handleYesClick()">Yes</button>
+    <button class="no-button" onclick="handleNoClick()">No</button>
+</div>
+
+<script>
+    let messageIndex = 0;
+
+    const messages = [
+        "Are you sure?",
+        "Think again 😏",
+        "Don't break my heart 💔",
+        "Last chance 😳",
+        "Come onnn 🥺"
+    ];
+
+    function handleNoClick() {
+        const noButton = document.querySelector('.no-button');
+        const yesButton = document.querySelector('.yes-button');
+
+        
+        noButton.textContent = messages[messageIndex];
+        messageIndex = (messageIndex + 1) % messages.length;
+
+        
+        const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = `${currentSize + 8}px`;
+    }
+
+    function handleYesClick() {
+        document.body.innerHTML = `
+            <div style="
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                font-size:48px;
+                background:#ffe6f0;
+                font-family:Arial;
+            ">
+                I knew it ❤️🥰
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
